@@ -52,7 +52,7 @@ model Comment {
   post        Post     @relation(fields: [postId], references: [id])
   userId      String
   user        User     @relation(fields: [userId], references: [id])
-  postedAt    DateTime
+  postedAt    DateTime @default(now())
   title       String
   description String
 }
