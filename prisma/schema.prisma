@@ -9,14 +9,13 @@ datasource db {
 
 model Author {
   id              String  @id @default(uuid())
-  postId          String
   post            Post[]
   name            String
   lastName        String
   email           String  @unique
   password        String
   profilePic      String
-  isAccountActive Boolean
+  isAccountActive Boolean @default(false)
   activationCode  String?
 }
 
@@ -42,7 +41,7 @@ model User {
   email           String    @unique
   password        String
   profilePic      String
-  isAccountActive Boolean
+  isAccountActive Boolean   @default(false)
   activationCode  String?
 }
 
