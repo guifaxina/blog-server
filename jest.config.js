@@ -1,4 +1,4 @@
-exports.module = {
+const module = {
   roots: [
     '<rootDir>/src'
   ],
@@ -10,3 +10,5 @@ exports.module = {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   }
 }
+
+export default module
