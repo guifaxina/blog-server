@@ -1,6 +1,6 @@
 {
   "src/**/*": [
     "yarn lint --fix",
-    "yarn test"
+    "yarn test --passWithNoTests"
   ]
 }
