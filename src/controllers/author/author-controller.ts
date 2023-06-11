@@ -3,7 +3,7 @@ import { type IAuthor } from '../../interfaces/author-interface'
 import { type IAuthorService } from '../../services/author/author-interface'
 import { AuthorService } from '../../services/author/author-service'
 
-export class AuthorController {
+class AuthorController {
   private readonly authorService: IAuthorService
 
   constructor () {
@@ -14,3 +14,5 @@ export class AuthorController {
     return await this.authorService.createAuthor(author)
   }
 }
+
+export default new AuthorController()
