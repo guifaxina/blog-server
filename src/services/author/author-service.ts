@@ -1,12 +1,12 @@
 import { type IAuthor } from '../../interfaces/author-interface'
-import { AuthorRepository } from '../../repositories/author/author-repository'
 import { type Author } from '@prisma/client'
+import type AuthorRepository from '../../repositories/author/author-repository'
 
-export class AuthorService {
+export default class AuthorService {
   private readonly authorRepository: AuthorRepository
 
-  constructor () {
-    this.authorRepository = new AuthorRepository()
+  constructor (authorRepository: AuthorRepository) {
+    this.authorRepository = authorRepository
   }
 
   public createAuthor = async (author: IAuthor): Promise<Error | Author> => {
