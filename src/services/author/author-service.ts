@@ -30,7 +30,7 @@ export default class AuthorService {
     }
   }
 
-  public findAuthorById = async (id: string): Promise<Error | Author> => {
+  public getAuthorById = async (id: string): Promise<Error | Author> => {
     const idRegex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/
     const isIdValid = idRegex.test(id)
 
