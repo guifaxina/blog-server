@@ -14,4 +14,17 @@ export default class AuthorRepository {
       return new Error('An error occurred')
     }
   }
+
+  public getAuthorById = async (id: string): Promise<Error | Author> => {
+    try {
+      return await prisma.author.findUniqueOrThrow({
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      logger.error(error)
+      return new Error('An error ocurred')
+    }
+  }
 }

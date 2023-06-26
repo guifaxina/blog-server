@@ -1,5 +1,6 @@
 export const typeDefs = `#graphql
   type Query {
+    getAuthor(id: ID!): Author!
     hello: String!
   }
 

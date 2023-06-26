@@ -1,9 +1,8 @@
 import { type IAuthor } from '../../interfaces/author-interface'
 import { type Author } from '@prisma/client'
 import type AuthorRepository from '../../repositories/author/author-repository'
-import bcrypt from 'bcrypt'
-import { logger } from '../../app'
 import { type IValidateCredentials } from '../../interfaces/validate-credentials'
+import bcrypt from 'bcrypt'
 
 export default class AuthorService {
   private readonly authorRepository: AuthorRepository
@@ -17,16 +16,29 @@ export default class AuthorService {
       const isAuthorCredentialsValid = this.validateCredentials(author)
 
       if (isAuthorCredentialsValid.status === 'error') {
-        return new Error(isAuthorCredentialsValid.errorMessage)
+        throw new Error(isAuthorCredentialsValid.errorMessage)
       }
 
       const password = this.hashPassword(author.password)
 
       return await this.authorRepository.createAuthor({ ...author, password })
     } catch (error) {
-      logger.error(error)
-      return new Error('Oops! Something went wrong')
+      if (error instanceof Error) {
+        throw new Error(error.message)
+      }
+      throw new Error('Oops! Something went wrong')
     }
+  }
+
+  public findAuthorById = async (id: string): Promise<Error | Author> => {
+    const idRegex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/
+    const isIdValid = idRegex.test(id)
+
+    if (!isIdValid) {
+      throw new Error('Invalid id.')
+    }
+
+    return await this.authorRepository.getAuthorById(id)
   }
 
   private readonly validateCredentials = (author: IAuthor): IValidateCredentials => {
