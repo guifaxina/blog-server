@@ -21,8 +21,11 @@ const server = new ApolloServer({
   }
 })
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: 3000 }
-})
+async function startServer (): Promise<void> {
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 3000 }
+  })
+  logger.info(`Server ready at: ${url}`)
+}
 
-logger.info(`Server ready at: ${url}`)
+void startServer()
