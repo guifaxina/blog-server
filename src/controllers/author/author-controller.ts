@@ -15,4 +15,7 @@ class AuthorController {
   }
 }
 
-export default new AuthorController(new AuthorService(new AuthorRepository()))
+const repository = new AuthorRepository()
+const service = new AuthorService(repository)
+
+export default new AuthorController(service)
