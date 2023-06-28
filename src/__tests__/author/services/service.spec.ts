@@ -1,5 +1,5 @@
-import AuthorService from '../../services/author/author-service'
-import { mockRepository, mockAuthor } from '../../__mocks__/mocks'
+import AuthorService from '../../../services/author/author-service'
+import { mockRepository, mockAuthor } from '../../../__mocks__/mocks'
 
 describe('Service', () => {
   describe('users input validation', () => {
@@ -31,6 +31,16 @@ describe('Service', () => {
       void expect(async () => {
         await service.createAuthor(incorrectMockAuthor)
       }).rejects.toThrow('Invalid credentials.')
+    })
+  })
+
+  describe('getAuthorById', () => {
+    const service = new AuthorService(mockRepository)
+
+    it('should return an error when id is not valid', () => {
+      void expect(async () => {
+        await service.getAuthorById('invalidId')
+      }).rejects.toThrow('Invalid id.')
     })
   })
 })
