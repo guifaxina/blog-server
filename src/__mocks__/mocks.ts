@@ -1,5 +1,6 @@
 export const mockRepository = {
-  createAuthor: jest.fn()
+  createAuthor: jest.fn(),
+  getAuthorById: jest.fn()
 }
 
 export const mockAuthor = {
