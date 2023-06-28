@@ -12,7 +12,7 @@ class AuthorController {
 
   public createAuthor = async (author: IAuthor): Promise<Error | Author> => await this.authorService.createAuthor(author)
 
-  public findAuthorById = async (id: string): Promise<Error | Author> => await this.authorService.getAuthorById(id)
+  public getAuthorById = async (id: string): Promise<Error | Author> => await this.authorService.getAuthorById(id)
 }
 
 const repository = new AuthorRepository()
