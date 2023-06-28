@@ -27,7 +27,7 @@ model Post {
   title       String
   description String
   readTime    Int
-  date        DateTime
+  date        DateTime  @default(now())
   tag         String
   thumbnail   String
   altText     String
