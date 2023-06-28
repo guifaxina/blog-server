@@ -11,7 +11,7 @@ export default class AuthorRepository {
       })
     } catch (error) {
       logger.error(error)
-      return new Error('An error occurred')
+      throw new Error('An unexpected error occurred.')
     }
   }
 
@@ -24,7 +24,7 @@ export default class AuthorRepository {
       })
     } catch (error) {
       logger.error(error)
-      return new Error('An error ocurred')
+      throw new Error('An unexpected error ocurred.')
     }
   }
 }
