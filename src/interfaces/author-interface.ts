@@ -4,5 +4,4 @@ export interface IAuthor {
   lastName: string
   email: string
   password: string
-  profilePic: string
 }
