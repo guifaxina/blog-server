@@ -24,7 +24,7 @@ export const typeDefs = `#graphql
     lastName: String!
     email: String!
     password: String!
-    profilePic: String!
+    profilePic: String
   }
 
   type Post {
@@ -33,13 +33,13 @@ export const typeDefs = `#graphql
     title: String!
     description: String!
     readTime: Int!
-    date: Date!
+    date: String!
     tag: String!
     thumbnail: String!
     altText: String!
   }
 
-  type CreatePostInput {
+  input CreatePostInput {
     title: String!
     description: String!
     tag: String!
