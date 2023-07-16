@@ -1,4 +1,4 @@
-import prisma from '../../../prisma/database'
+import prisma from '../../prisma/database'
 import { type Author } from '@prisma/client'
 import { type IAuthor } from '../../interfaces/author-interface'
 
