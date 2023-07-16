@@ -1,11 +1,8 @@
-import AuthorService from '../../../services/author/author-service'
 import { mockRepository, mockAuthor } from '../../../__mocks__/mocks'
 
 describe('create author', () => {
-  const service = new AuthorService(mockRepository)
-
   beforeEach(async () => {
-    await service.createAuthor(mockAuthor)
+    mockRepository.createAuthor(mockAuthor)
   })
 
   afterEach(() => {
