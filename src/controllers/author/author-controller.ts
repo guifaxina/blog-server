@@ -10,7 +10,7 @@ class AuthorController {
     this.authorService = authorService
   }
 
-  public createAuthor = async (author: IAuthor): Promise<Error | Author> => await this.authorService.createAuthor(author)
+  public createAuthor = async (author: IAuthor): Promise<Author> => await this.authorService.createAuthor(author)
 
   public getAuthorById = async (id: string): Promise<Error | Author> => await this.authorService.getAuthorById(id)
 }

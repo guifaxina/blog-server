@@ -12,7 +12,7 @@ export default class AuthorService {
     this.authorRepository = authorRepository
   }
 
-  public createAuthor = async (author: IAuthor): Promise<Error | Author> => {
+  public createAuthor = async (author: IAuthor): Promise<Author> => {
     try {
       const isAuthorCredentialsValid = this.validateCredentials(author)
 
@@ -21,7 +21,9 @@ export default class AuthorService {
       }
       const password = this.hashPassword(author.password)
 
-      return await this.authorRepository.createAuthor({ ...author, password })
+      const createdAuthor = await this.authorRepository.createAuthor({ ...author, password }) as Author
+
+      return createdAuthor
     } catch (error) {
       if (
         error instanceof Prisma.PrismaClientKnownRequestError &&
